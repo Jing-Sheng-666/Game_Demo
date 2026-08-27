@@ -1,17 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-/// <summary>
-/// 场景数据结构类
-/// </summary>
-public class SceneInfo
+[CreateAssetMenu(menuName = "GameData/SceneInfo", fileName = "SceneInfo")]
+public class SceneInfo : ScriptableObject
 {
     public int id;
-    public string imgRes;
+    public string imgRes;   // 关卡缩略图
     public string name;
     public string tips;
-    public string sceneName;
-    public int money;
-    public int towerHp;
+    public string sceneName; // 场景名
+    public int money;        // 初始金币
+    public int towerHp;      // 主塔血量
 }

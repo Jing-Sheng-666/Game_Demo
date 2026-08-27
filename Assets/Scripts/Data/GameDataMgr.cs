@@ -37,14 +37,18 @@ public class GameDataMgr
         musicData = JsonMgr.Instance.LoadData<MusicData>("MusicData");
         //获取初始化玩家数据
         playerData = JsonMgr.Instance.LoadData<PlayerData>("PlayerData");
-        //读取角色数据
-        roleInfoList = JsonMgr.Instance.LoadData<List<RoleInfo>>("RoleInfo");
-        //读取场景数据
-        sceneInfoList = JsonMgr.Instance.LoadData<List<SceneInfo>>("SceneInfo");
-        //读取怪物数据
-        monsterInfoList = JsonMgr.Instance.LoadData<List<MonsterInfo>>("MonsterInfo");
-        //读取塔的数据
-        towerInfoList = JsonMgr.Instance.LoadData<List<TowerInfo>>("TowerInfo");
+        //初始化所有的角色数据，怪物数据，塔数据，场景数据
+        roleInfoList = new List<RoleInfo>(Resources.LoadAll<RoleInfo>("RoleData"));
+        monsterInfoList = new List<MonsterInfo>(Resources.LoadAll<MonsterInfo>("MonsterData"));
+        towerInfoList = new List<TowerInfo>(Resources.LoadAll<TowerInfo>("TowerData"));
+        sceneInfoList = new List<SceneInfo>(Resources.LoadAll<SceneInfo>("SceneData"));
+
+        // 按 id 排序，保证 list[id - 1] 这类索引安全
+        roleInfoList.Sort((a, b) => a.id.CompareTo(b.id));
+        monsterInfoList.Sort((a, b) => a.id.CompareTo(b.id));
+        towerInfoList.Sort((a, b) => a.id.CompareTo(b.id));
+        sceneInfoList.Sort((a, b) => a.id.CompareTo(b.id));
+
     }
 
     /// <summary>

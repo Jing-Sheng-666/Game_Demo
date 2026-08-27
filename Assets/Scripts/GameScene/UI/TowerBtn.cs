@@ -15,13 +15,26 @@ public class TowerBtn : MonoBehaviour
     public Text txtMoney;
 
     /// <summary>
-    /// 初始化 按钮信息的方法
+    /// 初始化 按钮信息（按 id 查表，兼容键盘 1/2/3 的旧调用）
     /// </summary>
-    /// <param name="id"></param>
-    /// <param name="inputStr"></param>
     public void InitInfo(int id, string inputStr)
     {
-        TowerInfo info = GameDataMgr.Instance.towerInfoList[id - 1];
+        InitInfo(GameDataMgr.Instance.towerInfoList[id - 1], inputStr);
+    }
+
+    /// <summary>
+    /// 初始化 按钮信息（直接传入塔配置，升级按钮用）
+    /// </summary>
+    public void InitInfo(TowerInfo info, string inputStr)
+    {
+        // 空保护：满级塔 nextLev 为 null 时只显示提示文字，不崩
+        if (info == null)
+        {
+            txtTip.text = inputStr;
+            txtMoney.text = "";
+            return;
+        }
+
         imgPic.sprite = Resources.Load<Sprite>(info.imgRes);
         txtMoney.text = "￥" + info.money;
         txtTip.text = inputStr;
@@ -29,4 +42,5 @@ public class TowerBtn : MonoBehaviour
         if (info.money > GameLevelMgr.Instance.player.money)
             txtMoney.text = "金钱不足";
     }
+
 }

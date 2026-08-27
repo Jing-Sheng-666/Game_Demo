@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08bda8f55e26ce49bc79da246ad82d4, type: 3}
+  m_Name: TowerInfo 3
+  m_EditorClassIdentifier: 
+  id: 4
+  name: "\u673A\u67AA\u70AE1"
+  money: 200
+  atk: 2
+  atkRange: 8
+  offsetTime: 0.2
+  nextLev: {fileID: 11400000, guid: 6420d0e8c38134c41a5d4f56e9d48d6b, type: 2}
+  imgRes: TowerImg/2_1
+  res: Tower/2_1
+  atkType: 1
+  eff: eff/Fire1
