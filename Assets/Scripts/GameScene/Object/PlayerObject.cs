@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 using UnityEngine;
 
 public class PlayerObject : MonoBehaviour
 {
     private Animator animator;
+
+    // 生成的包装类（不用拖 Inspector，代码里 new 就行）
+    private PlayerControls controls;
 
     //1.玩家属性的初始化
     //玩家攻击力
@@ -13,9 +17,31 @@ public class PlayerObject : MonoBehaviour
     public int money;
     //旋转的速度
     private float roundSpeed = 50;
+    // 鼠标灵敏度（越小越不灵敏），0.1f ≈ 旧版 Input Manager Mouse X 的默认手感
+    [SerializeField] private float mouseSensitivity = 0.1f;
+
+
+    private float _v, _h;   // 平滑后的速度，跨帧保持
 
     //持枪对象才有的开火点
     public Transform gunPoint;
+
+    void Awake()
+    {
+        // 创建输入对象（生成类的实例化）
+        controls = new PlayerControls();
+    }
+
+    void OnEnable()
+    {
+        // 激活所有 action，不 Enable 的话输入是"死"的，ReadValue 永远是 0
+        controls.Enable();
+    }
+
+    void OnDisable()
+    {
+        controls.Disable();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -39,28 +65,28 @@ public class PlayerObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //2.移动变化 动作变化
-        //移动动作的变换 由于动作有位移  我们也应用了动作的位移  所以只要改变这两个值 就会有动作的变化 和 速度的变化
-        animator.SetFloat("VSpeed", Input.GetAxis("Vertical"));
-        animator.SetFloat("HSpeed", Input.GetAxis("Horizontal"));
-        //旋转
-        this.transform.Rotate(Vector3.up, Input.GetAxis("Mouse X") * roundSpeed * Time.deltaTime);
+        // 移动：Move action 返回离散 Vector2，平滑还是得自己来（3f = 旧版 Gravity/Sensitivity）
+        Vector2 move = controls.Player.Move.ReadValue<Vector2>();
+        _v = Mathf.MoveTowards(_v, move.y, 3f * Time.deltaTime);
+        _h = Mathf.MoveTowards(_h, move.x, 3f * Time.deltaTime);
+        animator.SetFloat("VSpeed", _v);
+        animator.SetFloat("HSpeed", _h);
 
-        if( Input.GetKeyDown(KeyCode.LeftShift) )
-        {
+        // 鼠标旋转：look.x 是原始像素位移，要乘灵敏度系数
+        Vector2 look = controls.Player.Look.ReadValue<Vector2>();
+        transform.Rotate(Vector3.up, look.x * mouseSensitivity * roundSpeed * Time.deltaTime);
+
+        // Shift 切瞄准层：Squat 就是你的 Shift 键 action
+        if (controls.Player.Squat.IsPressed())
             animator.SetLayerWeight(1, 1);
-        }
-        else if(Input.GetKeyUp(KeyCode.LeftShift))
-        {
+        else
             animator.SetLayerWeight(1, 0);
-        }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        // 触发型：R 翻滚、左键开火
+        if (controls.Player.Roll.WasPressedThisFrame())
             animator.SetTrigger("Roll");
-
-        if (Input.GetMouseButtonDown(0))
+        if (controls.Player.Fire.WasPressedThisFrame())
             animator.SetTrigger("Fire");
-            
     }
 
 

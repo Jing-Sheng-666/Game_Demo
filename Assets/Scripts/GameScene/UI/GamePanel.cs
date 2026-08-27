@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class GamePanel : BasePanel
 {
@@ -132,29 +133,23 @@ public class GamePanel : BasePanel
         if (!checkInput)
             return;
 
-        //如果没有造过塔 那么久检测1 2 3 按钮去建造塔
-        if( nowSelTowerPoint.nowTowerInfo == null )
+        // 如果没有造过塔，检测 1/2/3 键
+        if (nowSelTowerPoint.nowTowerInfo == null)
         {
-            if( Input.GetKeyDown(KeyCode.Alpha1) )
-            {
+            var kb = Keyboard.current;
+            if (kb != null && kb.digit1Key.wasPressedThisFrame)
                 nowSelTowerPoint.CreateTower(nowSelTowerPoint.chooseIDs[0]);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
+            else if (kb != null && kb.digit2Key.wasPressedThisFrame)
                 nowSelTowerPoint.CreateTower(nowSelTowerPoint.chooseIDs[1]);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
+            else if (kb != null && kb.digit3Key.wasPressedThisFrame)
                 nowSelTowerPoint.CreateTower(nowSelTowerPoint.chooseIDs[2]);
-            }
         }
-        //造过塔 就检测空格键 去建造
+        // 造过塔就检测空格键
         else
         {
-            if( Input.GetKeyDown(KeyCode.Space) )
-            {
+            var kb = Keyboard.current;
+            if (kb != null && kb.spaceKey.wasPressedThisFrame)
                 nowSelTowerPoint.CreateTower(nowSelTowerPoint.nowTowerInfo.nextLev);
-            }
         }
     }
 }
