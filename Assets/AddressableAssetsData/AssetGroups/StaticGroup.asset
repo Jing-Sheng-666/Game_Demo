@@ -81,6 +81,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - MonsterData
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 51f6e0660fee6d744ba854958acab539
+    m_Address: UI/UpdatePanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 545748eff8070be4e9ca9481ed2db7fe
     m_Address: Animator/_Cinematic_camera1
     m_ReadOnly: 0
