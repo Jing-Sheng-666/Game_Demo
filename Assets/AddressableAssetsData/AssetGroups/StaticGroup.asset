@@ -1,0 +1,289 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: StaticGroup
+  m_EditorClassIdentifier: 
+  m_GroupName: StaticGroup
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 927425c4ea4e50a4fbc4c4f8c93d700d
+  m_SerializeEntries:
+  - m_GUID: 000f035e2f32c6149ae6dc9dd23c03ac
+    m_Address: UI/Canvas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 01aea24c8314d6c4b8b74acedf3b54d3
+    m_Address: RoleData/RoleInfo 5
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RoleData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f8da33596d43384fb012aad0d50b53a
+    m_Address: Animator/Role/New Avatar Mask
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1239c2c02f9bcf542a105f5371dda792
+    m_Address: Animator/Monster/Broken
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 15ab75ed116c41a41ae6531b3d24ce03
+    m_Address: MonsterPoint1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 190930ec3f5dd414a8687431a4ac9742
+    m_Address: UI/ChooseScenePanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1bcc9bcca824d0f4bbef491963dc0b6e
+    m_Address: TowerData/TowerInfo 3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TowerData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 32f97f89b90b6804982b8fd19f51af14
+    m_Address: UI/GamePanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 457afdc0c03408e4e9cd1f5f211d47de
+    m_Address: Animator/Role/5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 45bb31763f15ea741b18bcb8ed3e660a
+    m_Address: MonsterData/MonsterInfo 2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MonsterData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4fdb6efa7a7ccfa43ba57c866a496a1d
+    m_Address: Animator/Monster/Crawl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 515c03841d1947241bf19e292ffe33cf
+    m_Address: MonsterData/MonsterInfo 3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MonsterData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 545748eff8070be4e9ca9481ed2db7fe
+    m_Address: Animator/_Cinematic_camera1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6420d0e8c38134c41a5d4f56e9d48d6b
+    m_Address: TowerData/TowerInfo 4
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TowerData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 68893b761c92a87409ed7bb793543594
+    m_Address: MonsterData/MonsterInfo
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MonsterData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7677bed3c34b9764aa6cdb2a70812521
+    m_Address: TowerData/TowerInfo
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TowerData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 776fe421e5667ef45a8938b105baa50c
+    m_Address: UI/TipPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7b3b8e5064c6f7f449c3e0305e634ada
+    m_Address: Animator/Role/4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7e16b4f99a8c45e44bfde58ac88489ce
+    m_Address: UI/GameOverPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 81f42c7a8302bd846894b89cf81d2719
+    m_Address: RoleData/RoleInfo 2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RoleData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8642a0b14bf44d74c91cd49520203e31
+    m_Address: Animator/Role/3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 921cc193ad977ef4ca63dba85be7df09
+    m_Address: TowerData/TowerInfo 8
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TowerData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9309f8e6e659a5e42b18d75f5392d8cc
+    m_Address: MonsterData/MonsterInfo 5
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MonsterData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 948105a43a59d3c4fbaa956952b1ca3b
+    m_Address: MonsterData/MonsterInfo 1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MonsterData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 959018b4745dbda43b2baaac8c537e04
+    m_Address: SceneData/SceneInfo
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SceneData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a3757a8487e7cfe48b73c16035e5f4aa
+    m_Address: RoleData/RoleInfo 4
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RoleData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a6ff1f3b7cd58df41843cfb611778b52
+    m_Address: RoleData/RoleInfo 1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RoleData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7999e1477c09af4c87ed23d55086694
+    m_Address: Animator/EatAnimator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7ce821aed76f6749a93517a484ce50f
+    m_Address: TowerData/TowerInfo 5
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TowerData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aaa7af5d022eb9d43ae73d400d595300
+    m_Address: Animator/Monster/Aggresive
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: af208813d39b6c14c823efbf0b96f1d9
+    m_Address: TowerData/TowerInfo 2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TowerData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b226b8b32c72e5a468456a5e52dbd660
+    m_Address: Animator/Role/2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b2aafc64c75caa5458773a9c09b5ca9d
+    m_Address: TowerData/TowerInfo 6
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TowerData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b7e5b935295d6d34db368a984a28c184
+    m_Address: SceneData/SceneInfo 1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SceneData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bbc6ff9a561ca2c45aac2a400373b7d1
+    m_Address: Animator/DownAnimator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c1081496c144a40498f3cd086b4f96d2
+    m_Address: RoleData/RoleInfo
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RoleData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c184cbd1baf1e55438304296a41a66ea
+    m_Address: RoleData/RoleInfo 3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RoleData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d8daaa1be3db13c448b100331f56ee4a
+    m_Address: Animator/Monster/Calm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: da4686b95f01431429d4e24413c06533
+    m_Address: UI/SettingPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db7180b0e6d584f46b67e724a0075240
+    m_Address: Animator/Role/6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db887c3ca71b0bf42a8bcc523505c36e
+    m_Address: UI/BeginPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd5eacc582b67eb4d94ee763c72639ad
+    m_Address: Animator/Role/1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e0d4613efce344a4b8f2c2f0bf50c737
+    m_Address: TowerPoint
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e1ed81d9421995f4196b1facc34c902c
+    m_Address: TowerData/TowerInfo 1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TowerData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e5e1c6d87657b73408d1af716f02b4ba
+    m_Address: UI/ChooseHeroPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eec97330ff9234643b66d05505f08bc7
+    m_Address: MonsterData/MonsterInfo 4
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MonsterData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef0d783d053438c45ad306f8b84fc3b8
+    m_Address: SceneData/SceneInfo 2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SceneData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ffad3f43b5a0a1d4692dcee105e3035e
+    m_Address: TowerData/TowerInfo 7
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TowerData
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: cbf418ee29c788040978b8e8c668a440, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 08d72755299545b45a407a8e3d42d2bd, type: 2}
+    - {fileID: 11400000, guid: 799c9779f2451a944b675288698a1269, type: 2}

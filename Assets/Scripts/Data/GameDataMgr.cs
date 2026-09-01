@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 /// <summary>
 /// 专门用来管理数据的类
@@ -38,10 +39,15 @@ public class GameDataMgr
         //获取初始化玩家数据
         playerData = JsonMgr.Instance.LoadData<PlayerData>("PlayerData");
         //初始化所有的角色数据，怪物数据，塔数据，场景数据
-        roleInfoList = new List<RoleInfo>(Resources.LoadAll<RoleInfo>("RoleData"));
-        monsterInfoList = new List<MonsterInfo>(Resources.LoadAll<MonsterInfo>("MonsterData"));
-        towerInfoList = new List<TowerInfo>(Resources.LoadAll<TowerInfo>("TowerData"));
-        sceneInfoList = new List<SceneInfo>(Resources.LoadAll<SceneInfo>("SceneData"));
+        var roleHandle = Addressables.LoadAssetsAsync<RoleInfo>("RoleData", null);
+        roleInfoList = new List<RoleInfo>(roleHandle.WaitForCompletion());
+        var monsterHandle = Addressables.LoadAssetsAsync<MonsterInfo>("MonsterData", null);
+        monsterInfoList = new List<MonsterInfo>(monsterHandle.WaitForCompletion());
+        var towerHandle = Addressables.LoadAssetsAsync<TowerInfo>("TowerData", null);
+        towerInfoList = new List<TowerInfo>(towerHandle.WaitForCompletion());
+        var sceneHandle = Addressables.LoadAssetsAsync<SceneInfo>("SceneData", null);
+        sceneInfoList = new List<SceneInfo>(sceneHandle.WaitForCompletion());
+
 
         // 按 id 排序，保证 list[id - 1] 这类索引安全
         roleInfoList.Sort((a, b) => a.id.CompareTo(b.id));
@@ -75,7 +81,7 @@ public class GameDataMgr
     {
         GameObject musicObj = new GameObject();
         AudioSource a = musicObj.AddComponent<AudioSource>();
-        a.clip = Resources.Load<AudioClip>(resName);
+        a.clip = AddressablesMgr.Instance.LoadAssetSync<AudioClip>(resName);
         a.volume = musicData.soundValue;
         a.mute = !musicData.soundOpen;
         a.Play();

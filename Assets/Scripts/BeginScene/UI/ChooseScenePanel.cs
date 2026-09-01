@@ -70,7 +70,7 @@ public class ChooseScenePanel : BasePanel
     {
         nowSceneInfo = GameDataMgr.Instance.sceneInfoList[nowIndex];
         //更新图片和显示的文字信息
-        imgScene.sprite = Resources.Load<Sprite>(nowSceneInfo.imgRes);
+        imgScene.sprite = AddressablesMgr.Instance.LoadAssetSync<Sprite>(nowSceneInfo.imgRes);
         txtInfo.text = "名称:\n" + nowSceneInfo.name + "\n" + "描述:\n" + nowSceneInfo.tips;
     }
 }

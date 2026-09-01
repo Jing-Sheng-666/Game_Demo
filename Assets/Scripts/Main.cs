@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Main : MonoBehaviour
 {
+
+    void Awake()
+    {
+        //创建一个更新管理器，用来检查AB包的更新
+        new GameObject("UpdateMgr").AddComponent<UpdateManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {

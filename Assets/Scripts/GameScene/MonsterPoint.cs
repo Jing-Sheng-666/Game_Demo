@@ -63,7 +63,7 @@ public class MonsterPoint : MonoBehaviour
         MonsterInfo info = GameDataMgr.Instance.monsterInfoList[nowID - 1];
 
         //创建怪物预设体
-        GameObject obj = Instantiate(Resources.Load<GameObject>(info.res), this.transform.position, Quaternion.identity);
+        GameObject obj = Instantiate(AddressablesMgr.Instance.LoadAssetSync<GameObject>(info.res), this.transform.position, Quaternion.identity);
         //为我们创建出的怪物预设体 添加怪物脚本 进行初始化
         MonsterObject monsterObj = obj.AddComponent<MonsterObject>();
         monsterObj.InitInfo(info);

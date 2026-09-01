@@ -42,7 +42,7 @@ public class TowerPoint : MonoBehaviour
             towerObj = null;
         }
         //实例化塔对象
-        towerObj = Instantiate(Resources.Load<GameObject>(info.res), this.transform.position, Quaternion.identity);
+        towerObj = Instantiate(AddressablesMgr.Instance.LoadAssetSync<GameObject>(info.res), this.transform.position, Quaternion.identity);
         //初始化塔
         towerObj.GetComponent<TowerObject>().InitInfo(info);
 

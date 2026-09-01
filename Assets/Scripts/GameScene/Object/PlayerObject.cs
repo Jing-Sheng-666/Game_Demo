@@ -132,7 +132,7 @@ public class PlayerObject : MonoBehaviour
             if (monster != null && !monster.isDead)
             {
                 //进行打击特效的创建
-                GameObject effObj = Instantiate(Resources.Load<GameObject>(GameDataMgr.Instance.nowSelRole.hitEff));
+                GameObject effObj = Instantiate(AddressablesMgr.Instance.LoadAssetSync<GameObject>(GameDataMgr.Instance.nowSelRole.hitEff));
                 effObj.transform.position = hits[i].point;
                 effObj.transform.rotation = Quaternion.LookRotation(hits[i].normal);
                 Destroy(effObj, 1);

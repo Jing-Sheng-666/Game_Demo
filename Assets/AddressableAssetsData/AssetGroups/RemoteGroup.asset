@@ -1,0 +1,277 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: RemoteGroup
+  m_EditorClassIdentifier: 
+  m_GroupName: RemoteGroup
+  m_Data:
+    m_SerializedData: []
+  m_GUID: b9f83e06107741f4b81f5f6fbcf666ef
+  m_SerializeEntries:
+  - m_GUID: 030ccb7ffd152ae46b05263a13b3176f
+    m_Address: SceneImg/GameScene2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0b412907d6a32e84f9e30d433ec867c5
+    m_Address: TowerImg/3_3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e3bd056afef877438267bec2f59100c
+    m_Address: SceneImg/GameScene1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 11276e265c3051540aa291f4f4fffdce
+    m_Address: Tower/3_3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 19098a03e5df4664a9cf0f65dd673df6
+    m_Address: Tower/1_3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1acd22474835f9148a28d99bfe1fde87
+    m_Address: TowerImg/3_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1bb8efcdac685b54c8de8767ca35fb4e
+    m_Address: Role/2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c652817acd984f47b1ac207fbf9cfe3
+    m_Address: Music/Eat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e7a7e64e5be99144a5c90a3d197a486
+    m_Address: Music/Knife
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2288ea2e18807d347979229430004363
+    m_Address: TowerImg/3_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e3ea8c47f4ff3d488d3a9b0758faa15
+    m_Address: Role/3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 43d0be8015ab31d49a99c38f9b1badd4
+    m_Address: Music/BKMusic
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5604ce8bc1cb7b049bbf693cb21f26df
+    m_Address: Tower/2_3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 59f4198c62067c64bb2825c2c46fea8e
+    m_Address: Role/6
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5b4c1413c4240154cb9738b30a466e84
+    m_Address: Tower/3_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5cec7f446cb41964792c53f3e4f25f93
+    m_Address: Monster/Z2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5f25edbd38ba9594aa7348b56e9b97e4
+    m_Address: Tower/2_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6767aca73637b2241bb3e81dd38665d5
+    m_Address: Music/Kin
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 699eec97fd14ccc4fa3ef88dba511574
+    m_Address: Music/dead
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 716b3470b0a81784ca50183e0e2d7d43
+    m_Address: Tower/2_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86e771012f51f8145a167800b82340a4
+    m_Address: Music/Gun
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 897c65dce6b253f43869b07d43c42d2c
+    m_Address: Monster/Z4
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8c28316a9fa1e1440836ebfd9a58aa19
+    m_Address: SceneImg/GameScene3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8d1a0a257ead24a409bfddc66f44953c
+    m_Address: Music/Tower
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f183ed157850e44fbe3ba1be21d2479
+    m_Address: Role/4
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 970b73320574b3c4997d161872dab15d
+    m_Address: Monster/Z1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 982d75980e2922b44999e2758d43e830
+    m_Address: eff/Fire2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9ee44f8bb295cd84f9ab41131062760f
+    m_Address: TowerImg/1_3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8d3c1ee199b06e4ab72e153fbbbf1c2
+    m_Address: eff/1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ad1ce5c2a51381743aeb8d0d397321ad
+    m_Address: TowerImg/1_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bd209e1227388c54ca82a846e57fca31
+    m_Address: TowerImg/2_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c6da69b5addd3094186143602ca1f91e
+    m_Address: eff/Fire1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c77e7e5436beda143b6243f587eab597
+    m_Address: Role/5
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cb15ed8725888e243b2db4ba086e3517
+    m_Address: Tower/1_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc43e1e7acb54ba449a48d96c3530f77
+    m_Address: Tower/1_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ce36e7ba0335aa342a343f55c360b163
+    m_Address: Role/1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf3a0fb9a3ff33b46945bfb718e97e5a
+    m_Address: TowerImg/2_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d06f3e8633ec596478518fa463c706a4
+    m_Address: Monster/Z3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d9c8ebedf1fab5d41ab1c148ffa5b765
+    m_Address: Music/Wound
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e6ef3469e629b854e98aac398301e38c
+    m_Address: TowerImg/1_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eb8ac1fb6b51d3048b259e9be0c926a1
+    m_Address: Tower/3_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ed28b967fde21ea44b73b55cb7a60e86
+    m_Address: TowerImg/2_3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: cbf418ee29c788040978b8e8c668a440, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 2f56fb8288b6aae4cb133bf596bdec3a, type: 2}
+    - {fileID: 11400000, guid: c0203c0a4a338414d80857de3087128d, type: 2}

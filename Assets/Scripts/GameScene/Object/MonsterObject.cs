@@ -32,7 +32,7 @@ public class MonsterObject : MonoBehaviour
     {
         monsterInfo = info;
         //状态机加载
-        animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>(info.animator);
+        animator.runtimeAnimatorController = AddressablesMgr.Instance.LoadAssetSync<RuntimeAnimatorController>(info.animator);
         //要变的当前血量
         hp = info.hp;
         //速度和加速度赋值 之所以赋值一样 是希望没有 明显的加速运动 而是一个匀速运动 初始化

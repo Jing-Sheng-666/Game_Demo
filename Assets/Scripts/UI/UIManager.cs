@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class UIManager
 {
@@ -17,7 +18,7 @@ public class UIManager
     private UIManager()
     {
         //得到场景中的Canvas对象
-        GameObject canvas = GameObject.Instantiate(Resources.Load<GameObject>("UI/Canvas"));
+        GameObject canvas = GameObject.Instantiate(AddressablesMgr.Instance.LoadAssetSync<GameObject>("UI/Canvas"));
         canvasTrans = canvas.transform;
         //通过过场景不移除该对象 保证这个游戏过程中 只有一个 canvas对象
         GameObject.DontDestroyOnLoad(canvas);
@@ -34,7 +35,7 @@ public class UIManager
             return panelDic[panelName] as T;
 
         //显示面板 根据面板名字 动态的创建预设体 设置父对象
-        GameObject panelObj = GameObject.Instantiate(Resources.Load<GameObject>("UI/" + panelName));
+        GameObject panelObj = GameObject.Instantiate(AddressablesMgr.Instance.LoadAssetSync<GameObject>("UI/" + panelName));
         //把这个对象 放到场景中的 Canvas下面
         panelObj.transform.SetParent(canvasTrans, false);
 

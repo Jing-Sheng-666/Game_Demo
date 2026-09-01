@@ -39,7 +39,7 @@ public class GameLevelMgr
         //首先获取到场景当中 玩家的出生位置
         Transform heroPos = GameObject.Find("HeroBornPos").transform;
         //实例化玩家预设体 然后把它的位置角度 设置为 场景当中出生点一致
-        GameObject heroObj = GameObject.Instantiate(Resources.Load<GameObject>(roleInfo.res), heroPos.position, heroPos.rotation);
+        GameObject heroObj = GameObject.Instantiate(AddressablesMgr.Instance.LoadAssetSync<GameObject>(roleInfo.res), heroPos.position, heroPos.rotation);
         //对玩家对象进行初始化
         player = heroObj.GetComponent<PlayerObject>();
         //初始化玩家的基础属性

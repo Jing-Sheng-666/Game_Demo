@@ -67,7 +67,7 @@ public class TowerObject : MonoBehaviour
                 //播放音效
                 GameDataMgr.Instance.PlaySound("Music/Tower");
                 //创建开火特效
-                GameObject effObj = Instantiate(Resources.Load<GameObject>(info.eff), gunPoint.position, gunPoint.rotation);
+                GameObject effObj = Instantiate(AddressablesMgr.Instance.LoadAssetSync<GameObject>(info.eff), gunPoint.position, gunPoint.rotation);
                 //延迟移除特效
                 Destroy(effObj, 0.2f);
 
@@ -84,7 +84,7 @@ public class TowerObject : MonoBehaviour
                 Time.time - nowTime >= info.offsetTime)
             {
                 //创建开火特效
-                GameObject effObj = Instantiate(Resources.Load<GameObject>(info.eff), gunPoint.position, gunPoint.rotation);
+                GameObject effObj = Instantiate(AddressablesMgr.Instance.LoadAssetSync<GameObject>(info.eff), gunPoint.position, gunPoint.rotation);
                 //延迟移除特效
                 Destroy(effObj, 0.2f);
 

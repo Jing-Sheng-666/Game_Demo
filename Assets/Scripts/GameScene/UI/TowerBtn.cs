@@ -35,7 +35,7 @@ public class TowerBtn : MonoBehaviour
             return;
         }
 
-        imgPic.sprite = Resources.Load<Sprite>(info.imgRes);
+        imgPic.sprite = AddressablesMgr.Instance.LoadAssetSync<Sprite>(info.imgRes);
         txtMoney.text = "￥" + info.money;
         txtTip.text = inputStr;
         //判断 钱够不够
