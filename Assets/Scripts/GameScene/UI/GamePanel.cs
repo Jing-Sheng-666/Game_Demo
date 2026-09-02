@@ -16,8 +16,6 @@ public class GamePanel : BasePanel
     //hp的初始宽 可以在外面去控制它 到底有多宽
     public float hpW = 500;
 
-    public Button btnQuit;
-
     //下方造塔组合控件的父对象 主要用于控制 显隐
     public Transform botTrans;
 
@@ -32,21 +30,13 @@ public class GamePanel : BasePanel
 
     public override void Init()
     {
-        //监听按钮事件
-        btnQuit.onClick.AddListener(() =>
-        {
-            //隐藏游戏界面
-            UIManager.Instance.HidePanel<GamePanel>();
-            //返回到开始界面
-            SceneManager.LoadScene("BeginScene");
-            //其它
-
-        });
 
         //一开始隐藏下方和造塔相关的UI
         botTrans.gameObject.SetActive(false);
         //锁定鼠标
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
     }
 
     /// <summary>
@@ -129,6 +119,21 @@ public class GamePanel : BasePanel
     protected override void Update()
     {
         base.Update();
+
+        //ESC键 打开/关闭退出面板
+        var keyboard = Keyboard.current;
+        if (keyboard != null && keyboard.escapeKey.wasPressedThisFrame)
+        {
+            QuitPanel quitPanel = UIManager.Instance.GetPanel<QuitPanel>();
+            if (quitPanel == null)
+                UIManager.Instance.ShowPanel<QuitPanel>();
+            else
+                quitPanel.ContinueGame();
+            return;
+        }
+
+        // 如果退出面板已经打开了 就不检测造塔输入了
+        if (UIManager.Instance.GetPanel<QuitPanel>() != null) return;
         //主要用于造塔点 键盘输入 造塔
         if (!checkInput)
             return;

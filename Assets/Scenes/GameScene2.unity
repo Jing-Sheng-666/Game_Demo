@@ -66384,10 +66384,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  offsetPos: {x: 0, y: 8, z: -9}
-  bodyHeight: 2
+  offsetPos: {x: 2, y: 3, z: -4}
+  lookForwardDist: 5
+  lookHeightOffset: 1.4
   moveSpeed: 10
   rotationSpeed: 20
+  adsOffset: {x: 1, y: 2, z: -2}
+  adsMoveSpeed: 12
 --- !u!81 &1457894436
 AudioListener:
   m_ObjectHideFlags: 0

@@ -20,6 +20,8 @@ public class GameOverPanel : BasePanel
             UIManager.Instance.HidePanel<GamePanel>();
             //清空当前关卡的数据
             GameLevelMgr.Instance.ClearInfo();
+            //恢复时间
+            Time.timeScale = 1;
             //切换场景
             SceneManager.LoadScene("BeginScene");
         });
@@ -40,5 +42,8 @@ public class GameOverPanel : BasePanel
     {
         base.ShowMe();
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        //暂停时间
+        Time.timeScale = 0;
     }
 }

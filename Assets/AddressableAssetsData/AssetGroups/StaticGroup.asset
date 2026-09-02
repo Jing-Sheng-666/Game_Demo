@@ -204,6 +204,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - TowerData
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b749d47805a67844382b087203994162
+    m_Address: UI/Crosshair
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b7e5b935295d6d34db368a984a28c184
     m_Address: SceneData/SceneInfo 1
     m_ReadOnly: 0
@@ -279,6 +284,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - SceneData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fec500d12a5773540a5f3b5775021ab3
+    m_Address: UI/QuitPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ffad3f43b5a0a1d4692dcee105e3035e
     m_Address: TowerData/TowerInfo 7

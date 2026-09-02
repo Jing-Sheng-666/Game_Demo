@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class PlayerObject : MonoBehaviour
 {
+
+    private float pitch;                    // 累计俯仰角
+    [SerializeField] private CameraMove cam; // 在 Inspector 拖入 Main Camera
+
     private Animator animator;
 
     // 生成的包装类（不用拖 Inspector，代码里 new 就行）
@@ -20,8 +24,9 @@ public class PlayerObject : MonoBehaviour
     // 鼠标灵敏度（越小越不灵敏），0.1f ≈ 旧版 Input Manager Mouse X 的默认手感
     [SerializeField] private float mouseSensitivity = 0.1f;
 
-
     private float _v, _h;   // 平滑后的速度，跨帧保持
+
+    private RectTransform crosshair;
 
     //持枪对象才有的开火点
     public Transform gunPoint;
@@ -30,6 +35,13 @@ public class PlayerObject : MonoBehaviour
     {
         // 创建输入对象（生成类的实例化）
         controls = new PlayerControls();
+        cam = Camera.main.GetComponent<CameraMove>();
+        // 动态加载准星预设体，挂到常驻 Canvas 下（Canvas 是 UIManager 创建的，场景里找不到）
+        crosshair = GameObject.Instantiate(
+            AddressablesMgr.Instance.LoadAssetSync<GameObject>("UI/Crosshair"),
+            FindObjectOfType<Canvas>().transform, false
+        ).GetComponent<RectTransform>();
+
     }
 
     void OnEnable()
@@ -42,6 +54,13 @@ public class PlayerObject : MonoBehaviour
     {
         controls.Disable();
     }
+
+    void OnDestroy()
+    {
+        if (crosshair != null)
+            Destroy(crosshair.gameObject);
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -75,12 +94,27 @@ public class PlayerObject : MonoBehaviour
         // 鼠标旋转：look.x 是原始像素位移，要乘灵敏度系数
         Vector2 look = controls.Player.Look.ReadValue<Vector2>();
         transform.Rotate(Vector3.up, look.x * mouseSensitivity * roundSpeed * Time.deltaTime);
-
+        // 上下瞄：累计 pitch 并交给相机
+        pitch += -look.y * mouseSensitivity * roundSpeed * Time.deltaTime;
+        pitch = Mathf.Clamp(pitch, -10f, 10f);
+        cam.SetPitch(pitch);
         // Shift 切瞄准层：Squat 就是你的 Shift 键 action
         if (controls.Player.Squat.IsPressed())
             animator.SetLayerWeight(1, 1);
         else
             animator.SetLayerWeight(1, 0);
+
+
+        // 右键按住 = 肩射：相机拉近 + 准星缩小
+        bool aiming = controls.Player.Aim.IsPressed();
+        cam.SetAim(aiming);
+        if (crosshair != null)
+        {
+            float targetScale = aiming ? 0.5f : 1f;
+            float s = Mathf.Lerp(crosshair.localScale.x, targetScale, 10f * Time.deltaTime);
+            crosshair.localScale = new Vector3(s, s, 1);
+        }
+
 
         // 触发型：R 翻滚、左键开火
         if (controls.Player.Roll.WasPressedThisFrame())
@@ -96,8 +130,10 @@ public class PlayerObject : MonoBehaviour
     /// </summary>
     public void KnifeEvent()
     {
-        //进行伤害检测
-        Collider[] colliders = Physics.OverlapSphere(this.transform.position + this.transform.forward + this.transform.up, 1, 1 << LayerMask.NameToLayer("Monster"));
+        // 近战判定：竖胶囊从地面扫到头顶，趴着的僵尸也能砍到
+        Vector3 bottom = this.transform.position + this.transform.forward * 1.1f;                 // 下端：地面高度，前 1.1m
+        Vector3 top = bottom + Vector3.up * 1.3f;                                             // 上端：头顶高度
+        Collider[] colliders = Physics.OverlapCapsule(bottom, top, 0.55f, 1 << LayerMask.NameToLayer("Monster"));
 
         //播放音效
         GameDataMgr.Instance.PlaySound("Music/Knife");
@@ -117,9 +153,13 @@ public class PlayerObject : MonoBehaviour
 
     public void ShootEvent()
     {
-        //进行摄像检测 
-        //前提是需要有开火点
-        RaycastHit[] hits = Physics.RaycastAll(new Ray(gunPoint.position, this.transform.forward), 1000, 1 << LayerMask.NameToLayer("Monster"));
+        // 从相机中心发射线：屏幕中心(准星) = 命中点
+        Vector3 origin = cam.transform.position + cam.transform.forward * 0.5f;
+        RaycastHit[] hits = Physics.RaycastAll(new Ray(origin, cam.transform.forward), 1000, 1 << LayerMask.NameToLayer("Monster"));
+
+        // 按距离排序，保证打中准星指的最近那只怪
+        if (hits.Length > 1)
+            System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
 
         //播放开枪音效
         GameDataMgr.Instance.PlaySound("Music/Gun");
