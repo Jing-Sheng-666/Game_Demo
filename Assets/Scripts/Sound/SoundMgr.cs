@@ -30,6 +30,9 @@ public class SoundMgr : MonoBehaviour
     //音效池对象的 Addressables key（必须与预制体地址一致）
     private const string SOUND_OBJ_KEY = "Sound/soundObj";
 
+    // 音效 clip 缓存：每个地址只加载一次，避免 Addressables 引用计数只增不减
+    private Dictionary<string, AudioClip> clipDic = new Dictionary<string, AudioClip>();
+
     //正在播放的音效
     private List<AudioSource> soundList = new List<AudioSource>();
     //音效音量大小
@@ -94,11 +97,16 @@ public class SoundMgr : MonoBehaviour
         if (!soundIsPlay)
             return;
 
-        AudioClip clip = AddressablesMgr.Instance.LoadAssetSync<AudioClip>(name);
-        if (clip == null)
+               // clip 每 key 只加载一次：命中缓存直接复用，不再重复走 Addressables（也不再重复 +1 计数）
+        if (!clipDic.TryGetValue(name, out AudioClip clip))
         {
-            Debug.LogWarning($"音效加载失败:{name}");
-            return;
+            clip = AddressablesMgr.Instance.LoadAssetSync<AudioClip>(name);
+            if (clip == null)
+            {
+                Debug.LogWarning($"音效加载失败:{name}");
+                return;
+            }
+            clipDic.Add(name, clip);
         }
 
         //从池取一个带 AudioSource 的音效对象
