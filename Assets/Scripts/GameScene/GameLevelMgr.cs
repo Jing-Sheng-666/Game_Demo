@@ -30,6 +30,8 @@ public class GameLevelMgr
     //1.是切换到游戏场景时 我们需要动态的创建玩家
     public void InitInfo(SceneInfo info)
     {
+        //场景切换后旧池对象已随旧场景销毁，清掉无效引用，重新开始
+        PoolMgr.Instance.ClearPool();
         //显示游戏界面
         UIManager.Instance.ShowPanel<GamePanel>();
 

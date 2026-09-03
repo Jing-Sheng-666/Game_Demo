@@ -62,11 +62,16 @@ public class MonsterPoint : MonoBehaviour
         //取出怪物数据
         MonsterInfo info = GameDataMgr.Instance.monsterInfoList[nowID - 1];
 
-        //创建怪物预设体
-        GameObject obj = Instantiate(AddressablesMgr.Instance.LoadAssetSync<GameObject>(info.res), this.transform.position, Quaternion.identity);
-        //为我们创建出的怪物预设体 添加怪物脚本 进行初始化
-        MonsterObject monsterObj = obj.AddComponent<MonsterObject>();
-        monsterObj.InitInfo(info);
+        //从池取出怪物（GetObject 内部已实例化/复用，并会把对象命名为 key）
+        GameObject obj = PoolMgr.Instance.GetObject(info.res);
+        //放到出怪点位置（池复用对象的位置是上次死亡时的，必须复位）
+        obj.transform.position = this.transform.position;
+        obj.transform.rotation = Quaternion.identity;
+
+        //预制体已挂 MonsterObject，直接取；GetComponent 不能删（复用对象自带组件）
+        MonsterObject monsterObj = obj.GetComponent<MonsterObject>();
+        monsterObj.InitInfo(info);   // InitInfo 要承担"出池全量重置"\\
+
 
         //告诉管理器 怪物数量加1
         //GameLevelMgr.Instance.ChangeMonsterNum(1);
@@ -85,6 +90,7 @@ public class MonsterPoint : MonoBehaviour
             Invoke("CreateMonster", createOffsetTime);
         }
     }
+
 
     /// <summary>
     /// 出怪点是否出怪结束

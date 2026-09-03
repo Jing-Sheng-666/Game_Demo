@@ -28,6 +28,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - RoleData
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 089b5c6f55b81f241b9d2e91eef92dc0
+    m_Address: Test/Cube
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0f8da33596d43384fb012aad0d50b53a
     m_Address: Animator/Role/New Avatar Mask
     m_ReadOnly: 0

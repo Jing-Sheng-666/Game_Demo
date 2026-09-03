@@ -83,6 +83,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - Remote
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 414ed03de63b8b14aa5907aad10ca608
+    m_Address: Sound/soundObj
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 43d0be8015ab31d49a99c38f9b1badd4
     m_Address: Music/BKMusic
     m_ReadOnly: 0

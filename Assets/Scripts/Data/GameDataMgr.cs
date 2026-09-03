@@ -79,13 +79,6 @@ public class GameDataMgr
     /// <param name="resName"></param>
     public void PlaySound(string resName)
     {
-        GameObject musicObj = new GameObject();
-        AudioSource a = musicObj.AddComponent<AudioSource>();
-        a.clip = AddressablesMgr.Instance.LoadAssetSync<AudioClip>(resName);
-        a.volume = musicData.soundValue;
-        a.mute = !musicData.soundOpen;
-        a.Play();
-
-        GameObject.Destroy(musicObj, 1);
+        SoundMgr.Instance.PlaySound(resName);
     }
 }

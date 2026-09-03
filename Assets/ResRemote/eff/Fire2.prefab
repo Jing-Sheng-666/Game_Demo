@@ -4786,6 +4786,8 @@ GameObject:
   - component: {fileID: 5846382756679634533}
   - component: {fileID: 5846382756697937951}
   - component: {fileID: 5846382756697554829}
+  - component: {fileID: -3299206856357960366}
+  - component: {fileID: 6171389468056439969}
   m_Layer: 0
   m_Name: Fire2
   m_TagString: Untagged
@@ -9572,6 +9574,32 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-3299206856357960366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5846382756679868499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f908baf658e19d488b1b6be9518da34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxNum: 5
+--- !u!114 &6171389468056439969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5846382756679868499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd08aa9a89c26647b6c41f1e2a4c5c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.2
 --- !u!1 &5846382756679885489
 GameObject:
   m_ObjectHideFlags: 0

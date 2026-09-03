@@ -27,20 +27,32 @@ public class MonsterObject : MonoBehaviour
         animator = this.GetComponent<Animator>();
     }
 
-    //初始化
     public void InitInfo(MonsterInfo info)
     {
         monsterInfo = info;
-        //状态机加载
-        animator.runtimeAnimatorController = AddressablesMgr.Instance.LoadAssetSync<RuntimeAnimatorController>(info.animator);
-        //要变的当前血量
-        hp = info.hp;
-        //速度和加速度赋值 之所以赋值一样 是希望没有 明显的加速运动 而是一个匀速运动 初始化
+        isDead = false;                                        // 复活后不再是死亡状态
+        // 先恢复 agent 再设参数（死亡时 agent.enabled 被关了，不复原怪不会动！）
+        agent.enabled = true;
+        if (!agent.Warp(this.transform.position))
+        {
+            Debug.LogWarning($"怪物出生点不在 NavMesh 上：{this.transform.position}");
+        }
         agent.speed = agent.acceleration = info.moveSpeed;
-        //旋转速度
         agent.angularSpeed = info.roundSpeed;
-    }
+        agent.isStopped = false;
+        agent.ResetPath();                                     // 清掉上辈子的寻路目标
 
+        // 动画：先换 controller 再整体重置状态机，清掉 Dead/Run/Wound 残留
+        animator.runtimeAnimatorController =
+            AddressablesMgr.Instance.LoadAssetSync<RuntimeAnimatorController>(info.animator);
+        animator.Rebind();                                     // 动画状态机回到初始状态
+        animator.Update(0f);
+
+        hp = info.hp;                                          // 血量回满
+        frontTime = 0;                                         // 攻击计时清零
+
+        // 出生动画：重置后从初始状态播起，动画事件 BornOver 会照常触发
+    }
     //受伤
     public void Wound(int dmg)
     {
@@ -90,9 +102,6 @@ public class MonsterObject : MonoBehaviour
         //从列表中移除怪物
         GameLevelMgr.Instance.RemoveMonster(this);
 
-        //在场景中移除已经死亡的对象
-        Destroy(this.gameObject);
-
         //怪物死亡时 检测 游戏是否胜利
         if(GameLevelMgr.Instance.CheckOver())
         {
@@ -100,6 +109,9 @@ public class MonsterObject : MonoBehaviour
             GameOverPanel panel = UIManager.Instance.ShowPanel<GameOverPanel>();
             panel.InitInfo(GameLevelMgr.Instance.player.money, true);
         }
+
+        //在场景中移除已经死亡的对象 → 改为回池（对象名 = 池key，与 GetObject 的命名约定一致）
+        PoolMgr.Instance.PushObject(this.gameObject, this.gameObject.name);
     }
 
     //出生过后再移动
