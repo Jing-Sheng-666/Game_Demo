@@ -53,6 +53,10 @@ public class UpdatePanel : BasePanel
     private IEnumerator SwitchAfter(float delay)
     {
         yield return new WaitForSeconds(delay);
+
+        // 热更（catalog/远程资源）就绪后，再异步加载游戏配置，加载完才进主菜单
+        yield return GameDataMgr.Instance.InitAsync();
+
         UIManager.Instance.HidePanel<UpdatePanel>(false);
         UIManager.Instance.ShowPanel<BeginPanel>();
     }

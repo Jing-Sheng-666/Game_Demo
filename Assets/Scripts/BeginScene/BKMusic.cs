@@ -13,10 +13,25 @@ public class BKMusic : MonoBehaviour
     void Awake()
     {
         instance = this;
-
         bkSource = this.GetComponent<AudioSource>();
 
-        //通过数据 来设置 音乐的大小和开关
+        // 启动阶段 GameDataMgr 可能还没初始化完（要等热更），完成后再应用音量设置
+        if (GameDataMgr.Instance.isInited)
+            ApplyMusicSetting();
+        else
+            GameDataMgr.Instance.OnInitFinished += ApplyMusicSetting;
+    }
+
+    private void OnDestroy()
+    {
+        // 防止事件持有已销毁对象（场景切换时 BKMusic 会被卸载）
+        if (GameDataMgr.Instance != null)
+            GameDataMgr.Instance.OnInitFinished -= ApplyMusicSetting;
+    }
+
+    // 把原来 Awake 里读数据设音量的逻辑搬到这里
+    private void ApplyMusicSetting()
+    {
         MusicData data = GameDataMgr.Instance.musicData;
         SetIsOpen(data.musicOpen);
         ChangeValue(data.musicValue);
