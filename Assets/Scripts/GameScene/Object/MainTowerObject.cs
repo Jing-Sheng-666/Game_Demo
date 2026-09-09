@@ -25,8 +25,8 @@ public class MainTowerObject : MonoBehaviour
         this.hp = hp;
         this.maxHp = maxHP;
 
-        //更新界面上血量的显示
-        UIManager.Instance.GetPanel<GamePanel>().UpdateTowerHp(hp, maxHP);
+        //更新血量：血量变化广播事件
+        EventCenter.Instance.EventTrigger(E_EventType.E_MainTower_HpChanged, new MainTowerHpArgs(hp, maxHP));
     }
 
     //自己受到伤害
@@ -42,10 +42,9 @@ public class MainTowerObject : MonoBehaviour
         {
             hp = 0;
             isDead = true;
-            //游戏结束
-            GameOverPanel panel = UIManager.Instance.ShowPanel<GameOverPanel>();
-            //得到奖励的一半
-            panel.InitInfo((int)(GameLevelMgr.Instance.player.money * 0.5f), false);
+            //失败奖励 = 当前金钱一半；结算面板由 E_Game_Over 的监听方（UI）弹出
+            EventCenter.Instance.EventTrigger(E_EventType.E_Game_Over,
+            new GameOverArgs((int)(GameLevelMgr.Instance.player.money * 0.5f), false));
         }
 
         //更新血量

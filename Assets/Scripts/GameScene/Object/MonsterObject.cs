@@ -88,8 +88,9 @@ public class MonsterObject : MonoBehaviour
 
         //播放音效
         GameDataMgr.Instance.PlaySound("Music/dead");
-        //加钱——我们之后通过关卡管理类 来管理游戏中的对象 通过它来让玩家加钱 
-        GameLevelMgr.Instance.player.AddMoney(10);
+        //死亡瞬间广播：击杀奖励等由监听方（GameLevelMgr）处理，
+        //怪物从此不需要知道"玩家"和"钱"的存在
+        EventCenter.Instance.EventTrigger(E_EventType.E_Monster_Dead, this);
     }
     
     //死亡动画播放完毕后 会调用的事件方法
@@ -105,9 +106,8 @@ public class MonsterObject : MonoBehaviour
         //怪物死亡时 检测 游戏是否胜利
         if(GameLevelMgr.Instance.CheckOver())
         {
-            //显示结束界面
-            GameOverPanel panel = UIManager.Instance.ShowPanel<GameOverPanel>();
-            panel.InitInfo(GameLevelMgr.Instance.player.money, true);
+            //怪物清完后检测胜利；结算界面由 E_Game_Over 的监听方（UI）弹出
+            GameLevelMgr.Instance.GameWin();
         }
 
         //在场景中移除已经死亡的对象 → 改为回池（对象名 = 池key，与 GetObject 的命名约定一致）

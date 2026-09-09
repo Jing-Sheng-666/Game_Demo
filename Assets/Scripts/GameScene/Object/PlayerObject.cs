@@ -78,7 +78,7 @@ public class PlayerObject : MonoBehaviour
         this.atk = atk;
         this.money = money;
         //更新界面上钱的数量
-        UpdateMoney();
+        EventCenter.Instance.EventTrigger(E_EventType.E_Player_MoneyChanged, this.money);
     }
 
     // Update is called once per frame
@@ -96,7 +96,7 @@ public class PlayerObject : MonoBehaviour
         transform.Rotate(Vector3.up, look.x * mouseSensitivity * roundSpeed * Time.deltaTime);
         // 上下瞄：累计 pitch 并交给相机
         pitch += -look.y * mouseSensitivity * roundSpeed * Time.deltaTime;
-        pitch = Mathf.Clamp(pitch, -10f, 10f);
+        pitch = Mathf.Clamp(pitch, -30f, 30f);
         cam.SetPitch(pitch);
         // Shift 切瞄准层：Squat 就是你的 Shift 键 action
         if (controls.Player.Squat.IsPressed())
@@ -183,21 +183,20 @@ public class PlayerObject : MonoBehaviour
     }
 
 
-    //4.钱变化的逻辑
-    public void UpdateMoney()
-    {
-        //间接的更新界面上 钱的数量
-        UIManager.Instance.GetPanel<GamePanel>().UpdateMoney(money);
-    }
+    // //钱变化的逻辑
+    // public void UpdateMoney()
+    // {
+    //     //间接的更新界面上 钱的数量
+    //     UIManager.Instance.GetPanel<GamePanel>().UpdateMoney(money);
+    // }
 
     /// <summary>
-    /// 提供给外部加钱的方法
+    /// 提供给外部加钱/扣钱的方法（扣钱传负数）
+    /// 金钱变化统一广播事件，玩家不再直接依赖 UI
     /// </summary>
-    /// <param name="money"></param>
     public void AddMoney(int money)
     {
-        //加钱
         this.money += money;
-        UpdateMoney();
+        EventCenter.Instance.EventTrigger(E_EventType.E_Player_MoneyChanged, this.money);
     }
 }

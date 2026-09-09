@@ -28,6 +28,23 @@ public class GamePanel : BasePanel
     //用来标识  是否检测 造塔输入的
     private bool checkInput;
 
+    private void OnEnable()
+    {
+        EventCenter.Instance.AddEventListener<int>(E_EventType.E_Player_MoneyChanged, OnMoneyChanged);
+        EventCenter.Instance.AddEventListener<WaveArgs>(E_EventType.E_Level_WaveChanged, OnWaveChanged);
+        EventCenter.Instance.AddEventListener<MainTowerHpArgs>(E_EventType.E_MainTower_HpChanged, OnHpChanged);
+        EventCenter.Instance.AddEventListener<GameOverArgs>(E_EventType.E_Game_Over, OnGameOver);
+    }
+
+    private void OnDisable()
+    {
+        EventCenter.Instance.RemoveEventListener<int>(E_EventType.E_Player_MoneyChanged, OnMoneyChanged);
+        EventCenter.Instance.RemoveEventListener<WaveArgs>(E_EventType.E_Level_WaveChanged, OnWaveChanged);
+        EventCenter.Instance.RemoveEventListener<MainTowerHpArgs>(E_EventType.E_MainTower_HpChanged, OnHpChanged);
+        EventCenter.Instance.RemoveEventListener<GameOverArgs>(E_EventType.E_Game_Over, OnGameOver);
+    }
+
+
     public override void Init()
     {
 
@@ -157,4 +174,18 @@ public class GamePanel : BasePanel
                 nowSelTowerPoint.CreateTower(nowSelTowerPoint.nowTowerInfo.nextLev);
         }
     }
+
+    private void OnMoneyChanged(int money)             { UpdateMoney(money); }
+    private void OnWaveChanged(WaveArgs args)          { UpdateWaveNum(args.now, args.max); }
+    private void OnHpChanged(MainTowerHpArgs args)     { UpdateTowerHp(args.hp, args.maxHp); }
+
+    /// <summary>
+    /// 游戏结束：由事件回调统一弹出结算面板（怪物/主塔不再直接引用本面板）
+    /// </summary>
+    private void OnGameOver(GameOverArgs args)
+    {
+        GameOverPanel panel = UIManager.Instance.ShowPanel<GameOverPanel>();
+        panel.InitInfo(args.money, args.isWin);
+    }
+
 }

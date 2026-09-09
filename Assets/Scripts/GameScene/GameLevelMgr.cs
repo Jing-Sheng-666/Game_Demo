@@ -24,9 +24,19 @@ public class GameLevelMgr
 
     private GameLevelMgr()
     {
-
+        //单例 = 整个游戏进程，注册一次即可。
+        //注意：若以后在切场景时全局调用了 EventCenter.Clear()，这里要改成可重新注册的结构
+        EventCenter.Instance.AddEventListener<MonsterObject>(E_EventType.E_Monster_Dead, OnMonsterDead);
     }
-
+    /// <summary>
+    /// 怪物死亡回调：由事件中心触发，击杀奖励规则在这里定
+    /// （以后奖励想按怪物数据走，直接读 monster 的配置即可）
+    /// </summary>
+    private void OnMonsterDead(MonsterObject monster)
+    {
+        if (player != null)
+            player.AddMoney(10);
+    }
     //1.是切换到游戏场景时 我们需要动态的创建玩家
     public void InitInfo(SceneInfo info)
     {
@@ -75,15 +85,15 @@ public class GameLevelMgr
     {
         maxWaveNum += num;
         nowWaveNum = maxWaveNum;
-        //更新界面
-        UIManager.Instance.GetPanel<GamePanel>().UpdateWaveNum(nowWaveNum, maxWaveNum);
+        //波数变化广播事件，UI 自己更新
+        EventCenter.Instance.EventTrigger(E_EventType.E_Level_WaveChanged, new WaveArgs(nowWaveNum, maxWaveNum));
     }
 
     public void ChangeNowWaveNum(int num)
     {
         nowWaveNum -= num;
-        //更新界面
-        UIManager.Instance.GetPanel<GamePanel>().UpdateWaveNum(nowWaveNum, maxWaveNum);
+        //波数变化广播事件，UI 自己更新
+        EventCenter.Instance.EventTrigger(E_EventType.E_Level_WaveChanged, new WaveArgs(nowWaveNum, maxWaveNum));
     }
 
     /// <summary>
@@ -170,6 +180,15 @@ public class GameLevelMgr
             }
         }
         return list;
+    }
+
+    /// <summary>
+    /// 游戏胜利：广播结束事件（胜利），结算面板由 UI 监听后自行弹出
+    /// </summary>
+    public void GameWin()
+    {
+        if (player != null)
+            EventCenter.Instance.EventTrigger(E_EventType.E_Game_Over, new GameOverArgs(player.money, true));
     }
 
     /// <summary>
