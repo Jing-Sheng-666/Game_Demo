@@ -8,11 +8,8 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 /// <summary>
 /// 专门用来管理数据的类
 /// </summary>
-public class GameDataMgr
+public class GameDataMgr : BaseManager<GameDataMgr>
 {
-    private static GameDataMgr instance = new GameDataMgr();
-    public static GameDataMgr Instance => instance;
-
     // 是否已完成初始化（配置表加载完）
     public bool isInited = false;
     // 初始化完成事件：热更阶段就创建的对象（BKMusic 等）可以等它

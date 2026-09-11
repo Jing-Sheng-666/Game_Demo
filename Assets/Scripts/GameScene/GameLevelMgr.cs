@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameLevelMgr
+public class GameLevelMgr : BaseManager<GameLevelMgr>
 {
-    private static GameLevelMgr instance = new GameLevelMgr();
-    public static GameLevelMgr Instance => instance;
-
     public PlayerObject player;
 
     //所有的出怪点

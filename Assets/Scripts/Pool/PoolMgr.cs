@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolData
+public class PoolData 
 {
     //存储对象
     private Stack<GameObject> dataStack = new Stack<GameObject>();
@@ -104,12 +104,8 @@ public class PoolData
     }
 }
 
-public class PoolMgr 
+public class PoolMgr : BaseManager<PoolMgr>
 {
-    private static PoolMgr _instance;
-
-    //用于加锁的对象
-    protected static readonly object lockObj = new object();
     //对象池字典
     private Dictionary<string, PoolData> poolDic = new Dictionary<string, PoolData>();
     //缓存加载到的预制体，同一个key只加载一次，避免引用计数只增不减
@@ -118,24 +114,6 @@ public class PoolMgr
     //对象池根物体
     private GameObject poolRoot;
 #endif
-
-    public static PoolMgr Instance
-    {
-        get
-        {
-           if(_instance == null)
-            {
-                lock (lockObj)
-                {
-                    if (_instance == null)
-                    {
-                        _instance = new PoolMgr();
-                    }
-                }
-            }
-            return _instance;
-        }
-    }
     private PoolMgr()
     {
 #if UNITY_EDITOR

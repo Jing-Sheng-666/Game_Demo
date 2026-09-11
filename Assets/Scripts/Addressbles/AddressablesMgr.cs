@@ -16,17 +16,8 @@ public class AddressablesInfo
     }
 }
 
-public class AddressablesMgr 
+public class AddressablesMgr : BaseManager<AddressablesMgr>
 {
-    private static AddressablesMgr _instance;
-    public static AddressablesMgr Instance
-    {
-        get
-        {
-            if (_instance == null) _instance = new AddressablesMgr();
-            return _instance;
-        }
-    }
     //用于存储异步加载的返回值 类型AsyncOperationHandle<T>
     public Dictionary<string, AddressablesInfo> AddressablesDic = new Dictionary<string, AddressablesInfo>();
     private AddressablesMgr()

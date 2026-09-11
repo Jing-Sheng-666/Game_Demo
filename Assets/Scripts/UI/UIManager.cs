@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public class UIManager
+public class UIManager : BaseManager<UIManager>
 {
-    private static UIManager instance = new UIManager();
-    public static UIManager Instance => instance;
 
     //用于存储显示着的面板的 每显示一个面板 就会存入这个字典
     //隐藏面板时 直接获取字典中的对应面板 进行隐藏

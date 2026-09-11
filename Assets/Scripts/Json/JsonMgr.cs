@@ -16,11 +16,8 @@ public enum JsonType
 /// <summary>
 /// Json数据管理类 主要用于进行 Json的序列化存储到硬盘 和 反序列化从硬盘中读取到内存中
 /// </summary>
-public class JsonMgr
+public class JsonMgr : BaseManager<JsonMgr>
 {
-    private static JsonMgr instance = new JsonMgr();
-    public static JsonMgr Instance => instance;
-
     private JsonMgr() { }
 
     //存储Json数据 序列化

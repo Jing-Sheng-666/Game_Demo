@@ -40,33 +40,8 @@ public class EventInfo: EventInfoBase
 /// <summary>
 /// 事件中心模块 
 /// </summary>
-public class EventCenter
+public class EventCenter : BaseManager<EventCenter>
 {
-    private static EventCenter _instance;
-
-    //用于加锁的对象
-    protected static readonly object lockObj = new object();
-
-    //属性的方式
-    public static EventCenter Instance
-    {
-        get
-        {
-            if(_instance == null)
-            {
-                lock (lockObj)
-                {
-                    if (_instance == null)
-                    {
-                        
-                        if (_instance == null)
-                            _instance = new EventCenter();
-                    }
-                }
-            }
-            return _instance;
-        }
-    }
     private EventCenter()
     {
     }
