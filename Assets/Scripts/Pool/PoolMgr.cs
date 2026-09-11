@@ -150,10 +150,19 @@ public class PoolMgr : BaseManager<PoolMgr>
             obj = GameObject.Instantiate(prefab);
             obj.name = name;
             if(!poolDic.ContainsKey(name))
+            {
                 //创建对象池数据
-                poolDic.Add(name, new PoolData(poolRoot, name, obj));
+#if UNITY_EDITOR
+                GameObject root = poolRoot;   //编辑器下用池根做层级布局
+#else
+                GameObject root = null;       //运行时不需要池根
+#endif
+                poolDic.Add(name, new PoolData(root, name, obj));
+            }
             else
+            {
                 poolDic[name].PushUsedList(obj);
+            }
         }
         else 
         {
