@@ -15,11 +15,11 @@ MonoBehaviour:
   id: 1
   name: "\u52A0\u519C\u70AE1"
   money: 200
-  atk: 5
+  atk: 30
   atkRange: 8
-  offsetTime: 1
+  offsetTime: 0.5
   nextLev: {fileID: 11400000, guid: e1ed81d9421995f4196b1facc34c902c, type: 2}
-  imgRes: TowerImg/1_1
+  imgRes: TowerImg/test
   res: Tower/1_1
   atkType: 1
   eff: eff/Fire1

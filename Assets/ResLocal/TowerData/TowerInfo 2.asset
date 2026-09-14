@@ -15,9 +15,9 @@ MonoBehaviour:
   id: 3
   name: "\u52A0\u519C\u70AE3"
   money: 400
-  atk: 20
+  atk: 50
   atkRange: 8
-  offsetTime: 1
+  offsetTime: 0.5
   nextLev: {fileID: 0}
   imgRes: TowerImg/1_3
   res: Tower/1_3

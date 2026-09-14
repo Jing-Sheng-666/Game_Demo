@@ -116,9 +116,9 @@ public class PoolMgr : BaseManager<PoolMgr>
 #endif
     private PoolMgr()
     {
-#if UNITY_EDITOR
-        EnsurePoolRoot();   // 创建池根
-#endif
+        // 构造函数保持"纯净"：不再提前创建 PoolRoot。
+        // 池根一律懒加载（第一次真正用到时由 EnsurePoolRoot 创建），
+        // 否则构造瞬间建出的根会被随后的 ClearPool 置空、变成场景里的孤儿，导致重复。
     }
     /// <summary>
     /// 获取对象
@@ -174,7 +174,7 @@ public class PoolMgr : BaseManager<PoolMgr>
     public void PushObject(GameObject obj, string name)
     {
 #if UNITY_EDITOR
-        EnsurePoolRoot();   // ★新增：替换原来散落的判空创建，且名字统一为 "Pool"
+        EnsurePoolRoot();   //用 poolRoot 前先确保它活着（懒加载）
 #endif
         if(!poolDic.ContainsKey(name))
         {
@@ -203,6 +203,10 @@ public class PoolMgr : BaseManager<PoolMgr>
         }
         prefabDic.Clear();
 #if UNITY_EDITOR
+        //★关键：置空前先把池根物体一起销毁，否则只清引用会留下孤儿 PoolRoot，
+        //        下一次 EnsurePoolRoot 又会 new 一个，场景里就出现两个。
+        if (poolRoot != null)
+            Object.Destroy(poolRoot);
         poolRoot = null;
 #endif
     }

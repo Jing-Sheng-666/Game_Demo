@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 4
   name: "\u673A\u67AA\u70AE1"
   money: 200
-  atk: 2
+  atk: 30
   atkRange: 8
   offsetTime: 0.2
   nextLev: {fileID: 11400000, guid: 6420d0e8c38134c41a5d4f56e9d48d6b, type: 2}

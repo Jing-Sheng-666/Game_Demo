@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 5
   res: Role/5
   atk: 6
-  tips: "\u6700\u5C0F\u7684\u7537\u4EBA"
+  tips: "\u673A\u67AA\u5175"
   lockMoney: 400
   type: 2
   hitEff: eff/1

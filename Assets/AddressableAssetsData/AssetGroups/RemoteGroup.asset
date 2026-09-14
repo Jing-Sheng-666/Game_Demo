@@ -77,6 +77,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Remote
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e2ca08be336abf4cbf9c4b91001d9f4
+    m_Address: TowerImg/test
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Remote
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3e3ea8c47f4ff3d488d3a9b0758faa15
     m_Address: Role/3
     m_ReadOnly: 0

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   res: Role/1
-  atk: 2
-  tips: "\u6700\u5E05\u7684\u7537\u4EBA"
+  atk: 100
+  tips: "\u5C0F\u5200\u5175"
   lockMoney: 0
   type: 1
   hitEff: eff/1
